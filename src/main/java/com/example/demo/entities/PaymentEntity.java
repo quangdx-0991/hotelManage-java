@@ -1,15 +1,13 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.example.demo.config.Views;
@@ -22,8 +20,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "tbl_typeroom")
-public class TypeRoomEntity implements Serializable{
+@Table(name="tbl_payment")
+public class PaymentEntity implements Serializable {
 	/**
 	 * 
 	 */
@@ -31,24 +29,19 @@ public class TypeRoomEntity implements Serializable{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "col_typeroom_id", nullable = false, unique = true, columnDefinition = ColumnDefinitionConstant.INTEGER)
+    @Column(name = "col_payment_id", nullable = false, unique = true, columnDefinition = ColumnDefinitionConstant.INTEGER)
 	@JsonView(Views.Public.class)
 	private int id;
 	
 	@JsonView(Views.Public.class)
-	@Column(name = "col_name", columnDefinition = ColumnDefinitionConstant.NVARCHAR)
-	private String name;
+	@Column(name = "col_no", columnDefinition = ColumnDefinitionConstant.NVARCHAR)
+	private String no;
 	
 	@JsonView(Views.Public.class)
-	@Column(name = "col_description", columnDefinition = ColumnDefinitionConstant.VARCHAR)
-	private String description;
+	@Column(name = "col_created_date", columnDefinition = ColumnDefinitionConstant.NVARCHAR)
+	private String created_date;
 	
 	@JsonView(Views.Public.class)
-	@Column(name = "col_price", columnDefinition =  ColumnDefinitionConstant.FLOAT)
-	private float price;
-	
-	@JsonView(Views.Public.class)
-	@OneToMany(mappedBy="typeroom", cascade = CascadeType.ALL)
-	private List<RoomEntity> rooms;
-	
+	@Column(name = "col_total_cost", columnDefinition = ColumnDefinitionConstant.FLOAT)
+	private Float total_cost;
 }
