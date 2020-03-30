@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -21,7 +23,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "room")
+@Table(name = "tbl_room")
 public class RoomEntity implements Serializable {
 	
 	/**
@@ -63,6 +65,10 @@ public class RoomEntity implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "col_typeroom_id", foreignKey = @ForeignKey(name = "FK_ROOM_CAT"))
 	private TypeRoomEntity typeroom;
-
-
+	
+    @ManyToMany(mappedBy = "rooms")
+    private List<BookRoomEntity> bookRooms;
+    
+    @ManyToMany(mappedBy = "rooms")
+    private List<DeviceEntity> devices;
 }
