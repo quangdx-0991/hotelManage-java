@@ -37,11 +37,11 @@ public class AuthController {
 											.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 		
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+		Object currentUser = authentication.getPrincipal();
 		String jwt = tokenProvider.generateToken((CustomUserDetails) authentication.getPrincipal());
 		
 		ResponseDataDTO<LoginResponseDTO> response = new ResponseDataDTO<LoginResponseDTO>();
-		response.setData(new LoginResponseDTO(jwt,userName));
+		response.setData(new LoginResponseDTO(jwt,currentUser));
 		response.setMessage(Constants.SUCCESS);
 		
 		return response;

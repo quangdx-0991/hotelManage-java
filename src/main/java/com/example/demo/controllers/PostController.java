@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dtos.PostDto;
 import com.example.demo.dtos.ResponseDataDTO;
 import com.example.demo.entities.PostEntity;
-import com.example.demo.services.PostService;
+import com.example.demo.services.impls.PostService;
 import com.example.demo.utils.Constants;
 
 

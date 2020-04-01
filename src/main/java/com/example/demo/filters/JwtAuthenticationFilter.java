@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.example.demo.services.UserService;
+import com.example.demo.services.impls.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 

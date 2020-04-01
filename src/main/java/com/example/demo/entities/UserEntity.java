@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.example.demo.config.Views;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import com.example.demo.utils.ColumnDefinitionConstant;
@@ -25,6 +26,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "tbl_user")
+@JsonIgnoreProperties(value = { "role" })
 public class UserEntity implements Serializable {
 	
 	/**
@@ -35,30 +37,30 @@ public class UserEntity implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "col_user_id", nullable = false, unique = true, columnDefinition = ColumnDefinitionConstant.INTEGER)
-	@JsonView(Views.Public.class)
+//	@JsonView(Views.Public.class)
 	private int id;
 	
-	@JsonView(Views.Public.class)
+//	@JsonView(Views.Public.class)
 	@Column(name = "col_username",nullable = false, unique = true, columnDefinition = ColumnDefinitionConstant.NVARCHAR)
 	private String username;
 	
-	@JsonView(Views.Public.class)
+//	@JsonView(Views.Public.class)
 	@Column(name = "col_email",nullable = false, unique = true, columnDefinition = ColumnDefinitionConstant.NVARCHAR)
 	private String email;
 	
-	@JsonView(Views.Public.class)
+//	@JsonView(Views.Public.class)
 	@Column(name = "col_password", columnDefinition = ColumnDefinitionConstant.NVARCHAR)
 	private String password;
 	
-	@JsonView(Views.Public.class)
+//	@JsonView(Views.Public.class)
 	@Column(name = "col_created_at", columnDefinition = ColumnDefinitionConstant.DATE)
 	private Date created_at;
 	
-	@JsonView(Views.Public.class)
+//	@JsonView(Views.Public.class)
 	@Column(name = "col_phone", columnDefinition = ColumnDefinitionConstant.NVARCHAR)
 	private String phone;
 	
-	@JsonView(Views.Public.class)
+//	@JsonView(Views.Public.class)
 	@ManyToOne
 	@JoinColumn(name = "col_role_id", foreignKey = @ForeignKey(name = "FK_USER_ROLE"))
 	private RoleEntity role;

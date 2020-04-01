@@ -14,6 +14,7 @@ import javax.persistence.Table;
 
 import com.example.demo.config.Views;
 import com.example.demo.utils.ColumnDefinitionConstant;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.Getter;
@@ -23,6 +24,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "tbl_typeroom")
+@JsonIgnoreProperties(value = { "rooms" })
 public class TypeRoomEntity implements Serializable{
 	/**
 	 * 
@@ -40,7 +42,7 @@ public class TypeRoomEntity implements Serializable{
 	private String name;
 	
 	@JsonView(Views.Public.class)
-	@Column(name = "col_description", columnDefinition = ColumnDefinitionConstant.VARCHAR)
+	@Column(name = "col_description", columnDefinition = ColumnDefinitionConstant.NVARCHAR)
 	private String description;
 	
 	@JsonView(Views.Public.class)

@@ -12,7 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import com.example.demo.filters.JwtAuthenticationFilter;
-import com.example.demo.services.UserService;
+import com.example.demo.services.impls.UserService;
 
 
 @EnableWebSecurity
@@ -50,8 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/home/**").permitAll()
 				.antMatchers("/images/**").permitAll()
 				.antMatchers("/api/post/**").permitAll()
-				.antMatchers("/api/room/**").permitAll()
-				.anyRequest().authenticated().and();
+				.antMatchers("/api/room/**").permitAll();
+//				.anyRequest().authenticated().and();
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
 	}
